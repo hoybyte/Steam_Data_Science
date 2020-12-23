@@ -1,9 +1,4 @@
 # Standard library imports
-import csv
-import datetime as dt
-import json
-import os
-import statistics
 import time
 
 # third-party imports
@@ -17,7 +12,7 @@ pd.set_option("max_columns", 100)
 
 def get_request(url, parameters=None):
     try:
-        response = requests.get(url=url, param=parameters)
+        response = requests.get(url=url, params=parameters)
     except SSLError as s:
         print("SSL ERROR:", s)
 
@@ -36,3 +31,11 @@ def get_request(url, parameters=None):
         time.sleep(10)
         print('Retrying.')
         return get_request(url, parameters)
+
+
+def get_steam_data():
+    url = "https://steamspy.com/api.php"
+    parameters = {"request": "all"}
+    json_data = get_request(url, parameters=parameters)
+    steam_spy_all = pd.DataFrame.from_dict(json_data, orient='index')
+    steam_spy_all.to_excel('output.xlsx', sheet_name='Steam')
