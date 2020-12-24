@@ -47,9 +47,5 @@ def clean_data():
     # convert Positive and negative reviews to int
 
 
-def create_database():
-    TODO
-
-
 def push_data_to_database():
     TODO
