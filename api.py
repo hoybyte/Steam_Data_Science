@@ -39,3 +39,17 @@ def get_steam_data():
     json_data = get_request(url, parameters=parameters)
     steam_spy_all = pd.DataFrame.from_dict(json_data, orient='index')
     steam_spy_all.to_excel('output.xlsx', sheet_name='Steam')
+
+
+def clean_data():
+    TODO
+    # convert price, initial price to int
+    # convert Positive and negative reviews to int
+
+
+def create_database():
+    TODO
+
+
+def push_data_to_database():
+    TODO
